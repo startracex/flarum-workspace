@@ -4,6 +4,14 @@
 			"name": "Root",
 			"path": "."
 		},
+		{
+			"name": "Sample",
+			"path": "packages/sample"
+		},
+		{
+			"name": "Sample-npm",
+			"path": "packages/sample/js"
+		},
 	],
 	"settings": {
 		"files.exclude": {
