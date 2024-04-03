@@ -1,0 +1,8 @@
+/public
+/storage
+/vendor
+/config.php
+/site.php
+/flarum
+*.conf
+dist
