@@ -22,7 +22,6 @@
             "flarum": true,
             "site.php": true,
             ".nginx.conf": true,
-            ".editorconfig": true,
             "dist": true
         }
     }
