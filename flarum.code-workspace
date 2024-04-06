@@ -1,30 +1,29 @@
 {
-	"folders": [
-		{
-			"name": "Root",
-			"path": "."
-		},
-		{
-			"name": "Sample",
-			"path": "packages/sample"
-		},
-		{
-			"name": "Sample-npm",
-			"path": "packages/sample/js"
-		},
-	],
-	"settings": {
-		"files.exclude": {
-			".git": true,
-			"storage": true,
-			"vendor": true,
-			"composer.lock": true,
-			"flarum": true,
-			"site.php": true,
-			".nginx.conf": true,
-			".editorconfig": true,
-			"yarn.lock": true,
-			"dist": true
-		}
-	}
+    "folders": [
+        {
+            "name": "Root",
+            "path": "."
+        },
+        {
+            "name": "Sample",
+            "path": "packages/sample"
+        },
+        {
+            "name": "Sample-npm",
+            "path": "packages/sample/js"
+        },
+    ],
+    "settings": {
+        "files.exclude": {
+            ".git": true,
+            "storage": true,
+            "vendor": true,
+            "composer.lock": true,
+            "flarum": true,
+            "site.php": true,
+            ".nginx.conf": true,
+            ".editorconfig": true,
+            "dist": true
+        }
+    }
 }
