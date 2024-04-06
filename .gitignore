@@ -6,3 +6,5 @@
 /flarum
 *.conf
 dist
+/composer.json
+/composer.lock
