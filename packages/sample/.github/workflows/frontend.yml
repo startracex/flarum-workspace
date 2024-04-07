@@ -1,18 +1,53 @@
-name: Sample JS
+name: Frontend
 
-on: [workflow_dispatch, push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  run:
-    uses: flarum/framework/.github/workflows/REUSABLE_frontend.yml@main
-    with:
-      enable_bundlewatch: false
-      enable_prettier: true
-      enable_typescript: true
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
 
-      frontend_directory: ./js
-      backend_directory: .
-      js_package_manager: yarn
-      main_git_branch: main
-    secrets:
-      bundlewatch_github_token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip
+          tools: composer:v2
+
+      - name: Install Composer dependencies
+        run: composer install
+        working-directory: .
+
+      - name: Install JS dependencies
+        run: pnpm install
+        working-directory: ./js
+
+      - name: JS Checks & Production Build
+        uses: flarum/action-build@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          build_script: build:ci
+          format_script: format-check # default
+          build_typings_script: build:type
+          package_manager: pnpm
+          js_path: ./js # default
+          do_not_commit: false # default
+          commit_all_dirty: false # default
